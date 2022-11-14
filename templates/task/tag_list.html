@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+
+  <tr>
+
+  <div class="car_list_features">
+{#  bad practic for button in h1, but i not have time to fix it, sorry(#}
+    <h1>Tag list <a href="{% url "task:tag-create" %}" class="btn btn-success">+</a></h1>
+    {% if tag_list %}
+
+      <table class="table table_style">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">id</th>
+          <th scope="col">Tag</th>
+        <th scope="col">update</th>
+        <th scope="col">delete</th>
+
+
+
+      </tr>
+      </thead>
+      <tbody>
+      {% for tag in tag_list %}
+        <tr>
+
+          <td>{{ tag.id }}</td>
+          <td>{{ tag.tag }}</td>
+          <td><a href="{% url "task:tag-update" pk=tag.id %}" class="btn btn-success">Update</a></td>
+          <td><a href="{% url "task:tag-delete" pk=tag.id%}" class="btn btn-danger">Delete</a></td>
+
+        </tr>
+      {% endfor %}
+
+    {% else %}
+      <p>No tags found</p>
+    {% endif %}
+
+    </tbody>
+    </table>
+</div>
+{% endblock %}
+
