@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div>
+    <h1>Welcome to ur Task manager </h1>
+    <h2> You have:</h2>
+    <ul>
+        <li><strong>Task:</strong><a href="{% url "task:tag-list" %}"> {{ num_task }}</a></li>
+        <li><strong>Tag:</strong><a href="{% url "task:tag-list" %}"> {{ num_tag }}</a></li>
+    </ul>
+
+    <p>You have visited this page
+        {{ num_visits }} time{{ num_visits|pluralize }}.
+    </p>
+  </div>
+
+{% endblock %}
